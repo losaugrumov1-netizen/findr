@@ -1,0 +1,786 @@
+<div id="app">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+
+    <button class="brand" id="brandBtn" aria-label="Home">
+      <span class="brand-star">✦</span>
+      <span class="brand-name">FINDR</span>
+    </button>
+
+    <div class="online-status">
+      <span class="online-dot"></span>
+      <span data-i18n="aiOnline">AI Online</span>
+    </div>
+
+    <button class="menu-button" id="menuButton" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </header>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- DRAWER -->
+  <aside class="drawer" id="drawer">
+
+    <div class="drawer-head">
+      <div>
+        <div class="drawer-kicker">FINDR</div>
+        <div class="drawer-title" data-i18n="menu">Menu</div>
+      </div>
+
+      <button class="close-button" id="closeDrawer">×</button>
+    </div>
+
+    <nav class="navigation">
+
+      <button class="nav-item active" data-page="home">
+        <span class="nav-icon">⌂</span>
+        <span data-i18n="home">Home</span>
+      </button>
+
+      <button class="nav-item" data-page="history">
+        <span class="nav-icon">◷</span>
+        <span data-i18n="history">History</span>
+      </button>
+
+      <button class="nav-item" data-page="settings">
+        <span class="nav-icon">⚙</span>
+        <span data-i18n="settings">Settings</span>
+      </button>
+
+      <button class="nav-item" data-page="about">
+        <span class="nav-icon">ⓘ</span>
+        <span data-i18n="about">About</span>
+      </button>
+
+    </nav>
+
+    <div class="drawer-footer">
+      <span>FINDR</span>
+      <span>v2.1</span>
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HOME -->
+    <section class="page home-page" id="homePage">
+
+      <div class="hero">
+
+        <div class="hero-mark">
+          <span>✦</span>
+        </div>
+
+        <div class="eyebrow">
+          <span class="tiny-dot"></span>
+          <span data-i18n="smartSearch">SMART SEARCH</span>
+        </div>
+
+        <h1 data-i18n="heroTitle">
+          What are you looking for?
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="heroSubtitle">
+          Search anything or let Findr understand your screenshot.
+        </p>
+
+
+        <!-- SEARCH -->
+        <div class="search-wrapper">
+
+          <div class="search-box" id="searchBox">
+
+            <span class="search-symbol">⌕</span>
+
+            <input
+              id="searchInput"
+              type="text"
+              data-i18n-placeholder="searchPlaceholder"
+              placeholder="Ask Findr anything..."
+              autocomplete="off"
+            >
+
+            <button
+              class="attach-button"
+              id="uploadButton"
+              title="Screenshot"
+            >
+              ⌁
+            </button>
+
+            <button
+              class="main-search-button"
+              id="searchButton"
+            >
+              <span data-i18n="search">Search</span>
+              <span class="button-arrow">→</span>
+            </button>
+
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/*"
+              hidden
+            >
+
+          </div>
+
+
+          <div class="mode-switch">
+
+            <button
+              class="mode active"
+              id="textMode"
+            >
+              <span>⌕</span>
+              <span data-i18n="search">Search</span>
+            </button>
+
+            <button
+              class="mode"
+              id="screenshotMode"
+            >
+              <span>▣</span>
+              <span data-i18n="screenshot">Screenshot</span>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- EXAMPLES -->
+        <div class="examples">
+
+          <span
+            class="examples-label"
+            data-i18n="tryLabel"
+          >
+            Try
+          </span>
+
+          <button class="example-button">
+            <span data-i18n="example1">
+              Find free PS5 games
+            </span>
+          </button>
+
+          <button class="example-button">
+            <span data-i18n="example2">
+              What is this error?
+            </span>
+          </button>
+
+          <button class="example-button">
+            <span data-i18n="example3">
+              Identify this game
+            </span>
+          </button>
+
+        </div>
+
+
+        <!-- RESULTS -->
+        <div
+          class="result-area"
+          id="resultArea"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- HISTORY -->
+    <section
+      class="page inner-page hidden"
+      id="historyPage"
+    >
+
+      <div class="page-heading">
+
+        <div class="page-kicker">FINDR</div>
+
+        <h2 data-i18n="history">
+          History
+        </h2>
+
+        <p data-i18n="historyDescription">
+          Your recent searches will appear here.
+        </p>
+
+      </div>
+
+
+      <div
+        class="history-card"
+        id="historyCard"
+      >
+
+        <div class="empty-symbol">
+          ◷
+        </div>
+
+        <h3 data-i18n="noHistory">
+          No searches yet
+        </h3>
+
+        <p data-i18n="historyEmpty">
+          Start searching and your history will appear here.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SETTINGS -->
+    <section
+      class="page inner-page hidden"
+      id="settingsPage"
+    >
+
+      <div class="page-heading">
+
+        <div class="page-kicker">
+          FINDR
+        </div>
+
+        <h2 data-i18n="settings">
+          Settings
+        </h2>
+
+        <p data-i18n="settingsDescription">
+          Customize your Findr experience.
+        </p>
+
+      </div>
+
+
+      <div class="settings-list">
+
+
+        <!-- APPEARANCE -->
+        <div class="settings-section">
+
+          <div class="section-title">
+            <span data-i18n="appearance">
+              Appearance
+            </span>
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="theme">
+                Theme
+              </strong>
+
+              <span data-i18n="themeDescription">
+                Choose how Findr looks.
+              </span>
+
+            </div>
+
+
+            <select
+              class="select-control"
+              id="themeSelect"
+            >
+
+              <option
+                value="dark"
+                data-i18n="dark"
+              >
+                Dark
+              </option>
+
+              <option
+                value="light"
+                data-i18n="light"
+              >
+                Light
+              </option>
+
+              <option
+                value="system"
+                data-i18n="system"
+              >
+                System
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="accent">
+                Accent color
+              </strong>
+
+              <span data-i18n="accentDescription">
+                Choose your interface accent.
+              </span>
+
+            </div>
+
+
+            <div class="accent-picker">
+
+              <button
+                class="accent active"
+                data-color="#55e58c"
+                style="--accent:#55e58c"
+              ></button>
+
+              <button
+                class="accent"
+                data-color="#5d9cff"
+                style="--accent:#5d9cff"
+              ></button>
+
+              <button
+                class="accent"
+                data-color="#a879ff"
+                style="--accent:#a879ff"
+              ></button>
+
+              <button
+                class="accent"
+                data-color="#ff7196"
+                style="--accent:#ff7196"
+              ></button>
+
+              <button
+                class="accent"
+                data-color="#ffb35c"
+                style="--accent:#ffb35c"
+              ></button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- LANGUAGE -->
+        <div class="settings-section">
+
+          <div class="section-title">
+            <span data-i18n="languageSection">
+              Language
+            </span>
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="language">
+                Language
+              </strong>
+
+              <span data-i18n="languageDescription">
+                Change the language of Findr.
+              </span>
+
+            </div>
+
+
+            <select
+              class="select-control language-select"
+              id="languageSelect"
+            >
+
+              <option value="en">
+                English
+              </option>
+
+              <option value="ru">
+                Русский
+              </option>
+
+              <option value="uk">
+                Українська
+              </option>
+
+              <option value="zh">
+                中文
+              </option>
+
+              <option value="ja">
+                日本語
+              </option>
+
+              <option value="ko">
+                한국어
+              </option>
+
+              <option value="es">
+                Español
+              </option>
+
+              <option value="fr">
+                Français
+              </option>
+
+              <option value="de">
+                Deutsch
+              </option>
+
+              <option value="pt">
+                Português
+              </option>
+
+              <option value="it">
+                Italiano
+              </option>
+
+              <option value="tr">
+                Türkçe
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <!-- BEHAVIOR -->
+        <div class="settings-section">
+
+          <div class="section-title">
+            <span data-i18n="behavior">
+              Behavior
+            </span>
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="animations">
+                Animations
+              </strong>
+
+              <span data-i18n="animationsDescription">
+                Use smooth interface animations.
+              </span>
+
+            </div>
+
+            <label class="switch">
+
+              <input
+                type="checkbox"
+                id="animationsToggle"
+                checked
+              >
+
+              <span></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="reduceMotion">
+                Reduce Motion
+              </strong>
+
+              <span data-i18n="reduceMotionDescription">
+                Reduce movement throughout Findr.
+              </span>
+
+            </div>
+
+            <label class="switch">
+
+              <input
+                type="checkbox"
+                id="motionToggle"
+              >
+
+              <span></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="autoAnalyze">
+                Auto-analyze screenshots
+              </strong>
+
+              <span data-i18n="autoAnalyzeDescription">
+                Start analysis after uploading an image.
+              </span>
+
+            </div>
+
+            <label class="switch">
+
+              <input
+                type="checkbox"
+                id="autoAnalyzeToggle"
+              >
+
+              <span></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="sound">
+                Sound Effects
+              </strong>
+
+              <span data-i18n="soundDescription">
+                Play small interface sounds.
+              </span>
+
+            </div>
+
+            <label class="switch">
+
+              <input
+                type="checkbox"
+                id="soundToggle"
+              >
+
+              <span></span>
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <!-- DATA -->
+        <div class="settings-section">
+
+          <div class="section-title">
+            <span data-i18n="data">
+              Data
+            </span>
+          </div>
+
+
+          <div class="setting-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="searchHistory">
+                Search History
+              </strong>
+
+              <span data-i18n="historyDescriptionShort">
+                Save your searches on this device.
+              </span>
+
+            </div>
+
+            <label class="switch">
+
+              <input
+                type="checkbox"
+                id="historyToggle"
+                checked
+              >
+
+              <span></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="setting-row danger-row">
+
+            <div class="setting-info">
+
+              <strong data-i18n="clearHistory">
+                Clear History
+              </strong>
+
+              <span data-i18n="clearHistoryDescription">
+                Delete all saved searches.
+              </span>
+
+            </div>
+
+            <button
+              class="danger-button"
+              id="clearHistoryButton"
+              data-i18n="clear"
+            >
+              Clear
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section
+      class="page inner-page hidden"
+      id="aboutPage"
+    >
+
+      <div class="page-heading">
+
+        <div class="page-kicker">
+          FINDR
+        </div>
+
+        <h2 data-i18n="about">
+          About Findr
+        </h2>
+
+        <p data-i18n="aboutIntro">
+          Search smarter. Understand faster.
+        </p>
+
+      </div>
+
+
+      <div class="about-grid">
+
+        <div class="about-card large">
+
+          <div class="about-symbol">
+            ✦
+          </div>
+
+          <h3 data-i18n="whatIsFindr">
+            What is Findr?
+          </h3>
+
+          <p data-i18n="whatIsFindrText">
+            Findr is a smart search assistant designed to help you find, understand and identify things faster.
+          </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+          <div class="about-card-icon">
+            ⌕
+          </div>
+
+          <h3 data-i18n="smartSearchTitle">
+            Smart Search
+          </h3>
+
+          <p data-i18n="smartSearchText">
+            Ask questions and find useful information without unnecessary complexity.
+          </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+          <div class="about-card-icon">
+            ▣
+          </div>
+
+          <h3 data-i18n="screenshotSearchTitle">
+            Screenshot Search
+          </h3>
+
+          <p data-i18n="screenshotSearchText">
+            Upload a screenshot and let Findr understand what's inside it.
+          </p>
+
+        </div>
+
+
+        <div class="about-card creator-card">
+
+          <div
+            class="creator-label"
+            data-i18n="createdBy"
+          >
+            Created by
+          </div>
+
+          <div class="creator-name">
+            Oleksii Uhriumov
+          </div>
+
+          <p data-i18n="creatorText">
+            Built with the idea of making search simpler, faster and more useful.
+          </p>
+
+        </div>
+
+
+        <div class="about-card version-card">
+
+          <span data-i18n="version">
+            Version
+          </span>
+
+          <strong>
+            2.1
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- TOAST -->
+  <div
+    class="toast"
+    id="toast"
+  >
+    <span class="toast-icon">✓</span>
+    <span id="toastText">Saved</span>
+  </div>
+
+</div>
